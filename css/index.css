@@ -1,0 +1,283 @@
+/* --- RESET & GLOBAL --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
+body { 
+    background: #fdfdfd url('bg_pattern.jpg') no-repeat center center fixed; 
+    background-size: cover; 
+    overflow-x: hidden; 
+}
+
+/* --- HEADER BARU (GLOW & DROPDOWN) --- */
+header {
+    background-color: #9f1212;
+    padding: 0px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #cfaa56;
+    position: relative;
+    z-index: 1000;
+}
+.logo img { height: 60px; }
+.user-icon { color: white; font-size: 24px; cursor: pointer; }
+
+/* Navigation Container */
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase; /* Huruf besar semua */
+    transition: all 0.3s ease;
+    padding: 10px 5px;
+    position: relative;
+}
+
+/* GLOWING EFFECT */
+.nav-link:hover, .nav-link.active {
+    color: #fff;
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #cfaa56,
+        0 0 30px #cfaa56;
+}
+
+/* DROPDOWN MENU */
+.dropdown { position: relative; }
+
+.dropdown-content {
+    display: none; /* Sorok dulu */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 999;
+    border: 2px solid #9f1212;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+}
+
+.dropdown-content a:hover {
+    background-color: #cfaa56;
+    color: white;
+}
+
+/* Tunjuk dropdown bila hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* --- 1. HERO BANNER (SLIDE & FADE) --- */
+.hero-wrapper {
+    width: 100%;
+    height: 400px; /* Saiz banner besar */
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #cfaa56;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    transform: translateX(-50px); /* Mula kat kiri sikit */
+    transition: opacity 1.5s ease, transform 6s linear; /* Slide perlahan ke kanan */
+}
+
+.hero-img.active {
+    opacity: 1;
+    transform: translateX(0); /* Slide ke posisi asal */
+}
+
+
+/* --- MAIN LAYOUT GRID (PADAT) --- */
+.main-grid {
+    display: grid;
+    /* Kiri(25%) Tengah(50%) Kanan(25%) */
+    grid-template-columns: 1fr 2fr 1fr; 
+    gap: 15px; /* Jarak rapat supaya tak ada ruang kosong besar */
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 15px;
+    min-height: 600px;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-bottom: 3px solid black;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+/* --- 2. KOLUM KIRI (RECENT WORK) --- */
+.stack-container { display: flex; flex-direction: column; gap: 15px; }
+
+.img-card {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+    border: 1px solid #ddd;
+    opacity: 0; /* Mula ghaib */
+}
+
+.img-card img { width: 100%; height: 100%; object-fit: cover; }
+
+/* SHAKING EFFECT (LOW) */
+.img-card:hover {
+    animation: gentleShake 0.4s ease-in-out infinite;
+    cursor: pointer;
+    border: 2px solid #cfaa56;
+}
+
+@keyframes gentleShake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    75% { transform: rotate(-1deg); }
+}
+
+/* ANIMASI MASUK KIRI/KANAN */
+.enter-right { animation: slideInRight 1s ease-out forwards; }
+.enter-left { animation: slideInLeft 1s ease-out forwards; animation-delay: 0.3s; }
+.img-card:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+
+/* --- 3. KOLUM TENGAH (JOURNAL TYPEWRITER) --- */
+.col-center {
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #000;
+    height: fit-content;
+}
+
+.typewriter-box {
+    min-height: 100px;
+    margin-bottom: 20px;
+}
+
+.text-content {
+    font-family: 'Courier New', Courier, monospace; /* Font typewriter */
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.divider { height: 2px; background: #eee; margin: 20px 0; }
+
+
+/* --- 4. KOLUM KANAN (VIDEO STORIES) --- */
+.video-stack { display: flex; flex-direction: column; gap: 10px; }
+
+.video-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 2px solid black;
+    opacity: 0;
+}
+
+.video-card iframe {
+    width: 100%; height: 100%; border: none;
+}
+
+/* Link Overlay (Supaya user click link, bukan pause video) */
+.video-link-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 10; cursor: pointer;
+}
+.video-card:hover { transform: scale(1.02); transition: 0.2s; border-color: #cfaa56; }
+
+.mini-video-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+
+/* Video Animations */
+.fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+.delay-1 { animation-delay: 0.8s; }
+.delay-2 { animation-delay: 1.0s; }
+.delay-3 { animation-delay: 1.2s; }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #9f1212; padding: 0px 30px;
+    border-top: 4px solid #cfaa56; display: flex;
+    justify-content: space-between; align-items: center; margin-top: 40px;
+}
+.footer-lines { flex: 1; height: 4px; background-color: white; margin-right: 20px; max-width: 200px; }
+.footer-logo img { height: 70px; }
+.social-icons { display: flex; gap: 10px; }
+.social-btn { width: 40px; height: 40px; background: white; border-radius: 30%; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+.social-btn img { width: 200%; }
+
+/* Mobile Responsive */
+@media (max-width: 800px) {
+    .main-grid { grid-template-columns: 1fr; }
+    .nav-list { display: none; } /* Kena buat hamburger menu utk mobile sebenarnya */
+}
+
+
+@media (max-width: 768px) {
+    h1.page-title { font-size: 2.5rem; }
+    .nav-container { display: none; }
+    .hand-img { width: 100px; }
+    .hand-left { left: -20px; }
+    .hand-right { right: -20px; }
+}
+
+/* --- BACKGROUND TEXTURE SETTINGS --- */
+.background-texture {
+    position: fixed;  /* Melekat pada skrin, tak bergerak bila scroll */
+    top: 0;
+    left: 0;
+    width: 100%;      /* Lebar penuh */
+    height: 100%;     /* Tinggi penuh */
+    object-fit: cover; /* Pastikan gambar tak kemek/gepenk */
+    z-index: -1;      /* PENTING: Ini tolak gambar ke belakang sekali */
+    opacity: 0.3;     /* (Optional) Pudarkan sikit supaya tulisan jelas */
+}

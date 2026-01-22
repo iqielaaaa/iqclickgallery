@@ -1,0 +1,348 @@
+/* --- RESET & GLOBAL --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
+body { 
+    background: #fdfdfd url('bg_pattern.jpg') no-repeat center center fixed; 
+    background-size: cover; 
+    overflow-x: hidden; 
+}
+
+/* --- HEADER & NAVIGATION (KEKALKAN) --- */
+header {
+    background-color: #9f1212; padding: 0px 30px; display: flex;
+    justify-content: space-between; align-items: center;
+    border-bottom: 4px solid #cfaa56; position: relative; z-index: 1000;
+}
+.logo img { height: 70px; }
+.user-icon { color: white; font-size: 24px; cursor: pointer; }
+.nav-list { display: flex; list-style: none; gap: 30px; }
+.nav-link {
+    text-decoration: none; color: white; font-weight: 900; font-size: 1.1rem;
+    text-transform: uppercase; padding: 10px 5px; transition: all 0.3s ease;
+}
+.nav-link:hover, .nav-link.active {
+    color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px #cfaa56;
+}
+
+/* Dropdown */
+.dropdown { position: relative; }
+.dropdown-content {
+    display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    background-color: #fff; min-width: 120px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    border-radius: 5px; z-index: 999; border: 2px solid #9f1212;
+}
+.dropdown-content a {
+    color: black; padding: 10px 16px; text-decoration: none; display: block; font-weight: bold; text-align: center;
+}
+.dropdown-content a:hover { background-color: #cfaa56; color: white; }
+.dropdown:hover .dropdown-content { display: block; }
+
+/* --- TOP BANNER --- */
+.top-banner {
+    width: 100%;
+    height: 250px; /* Lebar banner atas */
+    overflow: hidden;
+    border-bottom: 3px solid #cfaa56;
+}
+.top-banner img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- 3D CAROUSEL SECTION --- */
+.carousel-section {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Tinggi kawasan carousel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; /* PENTING: Untuk effect 3D */
+    overflow: hidden;
+    margin-top: -30px; /* Tarik naik sikit supaya rapat dgn banner */
+}
+
+.carousel-container {
+    width: 300px; /* Lebar satu item video */
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d; /* Kekalkan bentuk 3D */
+}
+
+/* Spinner (Track yang berpusing) */
+.carousel-spinner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-out; /* Smooth movement */
+}
+
+/* Individual Item (Video + Teks) */
+.carousel-item {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    top: 10px;
+    left: 0;
+    text-align: center;
+    /* Formula matematik akan diletak dalam JS, 
+       tapi CSS ni asas supaya dia duduk bertindih dulu */
+}
+
+/* Video Styling */
+.video-wrapper {
+    width: 100%;
+    height: 85%; /* Ruang untuk video */
+    background: #000;
+    border: 3px solid white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.video-wrapper video {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+/* GLOWING TEXT EFFECT (TAHUN) */
+.year-link {
+    display: block;
+    margin-top: 10px;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #222;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect untuk link */
+.carousel-item:hover .year-link {
+    color: #cfaa56;
+    text-shadow: 
+        0 0 5px #cfaa56,
+        0 0 15px #9f1212,
+        0 0 30px #9f1212;
+    transform: scale(1.1);
+}
+
+.carousel-item:hover .video-wrapper {
+    border-color: #cfaa56;
+    box-shadow: 0 0 20px #cfaa56;
+}
+
+/* Navigasi Arrow (Optional) */
+.nav-arrows {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    pointer-events: none; /* Supaya tak ganggu click tgh */
+    z-index: 2000;
+}
+.arrow-btn {
+
+    pointer-events: auto;
+    background: transparent;
+    border: none;
+    font-size: 3rem;
+    color: #cfaa56; /* Warna Emas */
+    cursor: pointer;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    transition: transform 0.2s;
+}
+.arrow-btn:hover { transform: scale(1.2); color: #9f1212; }
+
+
+/* FOOTER */
+/* --- RESET & GLOBAL --- */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
+body { 
+    background: #fdfdfd url('bg_pattern.jpg') no-repeat center center fixed; 
+    background-size: cover; 
+    overflow-x: hidden; 
+}
+
+/* --- HEADER & NAVIGATION (KEKALKAN) --- */
+header {
+    background-color: #9f1212; padding: 10px 30px; display: flex;
+    justify-content: space-between; align-items: center;
+    border-bottom: 4px solid #cfaa56; position: relative; z-index: 1000;
+}
+.logo img { height: 50px; }
+.user-icon { color: white; font-size: 24px; cursor: pointer; }
+.nav-list { display: flex; list-style: none; gap: 30px; }
+.nav-link {
+    text-decoration: none; color: white; font-weight: 900; font-size: 1.1rem;
+    text-transform: uppercase; padding: 10px 5px; transition: all 0.3s ease;
+}
+.nav-link:hover, .nav-link.active {
+    color: #fff; text-shadow: 0 0 10px #fff, 0 0 20px #cfaa56;
+}
+
+/* Dropdown */
+.dropdown { position: relative; }
+.dropdown-content {
+    display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    background-color: #fff; min-width: 120px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    border-radius: 5px; z-index: 999; border: 2px solid #9f1212;
+}
+.dropdown-content a {
+    color: black; padding: 10px 16px; text-decoration: none; display: block; font-weight: bold; text-align: center;
+}
+.dropdown-content a:hover { background-color: #cfaa56; color: white; }
+.dropdown:hover .dropdown-content { display: block; }
+
+/* --- TOP BANNER --- */
+.top-banner {
+    width: 100%;
+    height: 250px; 
+    overflow: hidden;
+    border-bottom: 3px solid #cfaa56;
+    position: relative;
+    z-index: 1; /* Pastikan banner duduk belakang navigation */
+}
+.top-banner img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- 3D CAROUSEL SECTION (UPDATED) --- */
+.carousel-section {
+    position: relative;
+    width: 100%;
+    /* UPDATE 1: Tinggi dibesarkan ke 700px supaya video tak terpotong/langgar bawah */
+    height: 700px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; 
+    overflow: hidden; 
+    margin-top: -30px; 
+    z-index: 10;
+}
+
+.carousel-container {
+    width: 300px; 
+    height: 400px;
+    position: relative;
+    transform-style: preserve-3d; 
+}
+
+/* Spinner (Track yang berpusing) */
+.carousel-spinner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-out; 
+}
+
+/* Individual Item (Video + Teks) */
+.carousel-item {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    top: 10px;
+    left: 0;
+    text-align: center;
+}
+
+/* Video Styling */
+.video-wrapper {
+    width: 100%;
+    height: 85%; 
+    background: #000;
+    border: 3px solid white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.video-wrapper video {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+/* GLOWING TEXT EFFECT (TAHUN) */
+.year-link {
+    display: block;
+    margin-top: 10px;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #222;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.carousel-item:hover .year-link {
+    color: #cfaa56;
+    text-shadow: 0 0 5px #cfaa56, 0 0 15px #9f1212, 0 0 30px #9f1212;
+    transform: scale(1.1);
+}
+
+.carousel-item:hover .video-wrapper {
+    border-color: #cfaa56;
+    box-shadow: 0 0 20px #cfaa56;
+}
+
+/* Navigasi Arrow */
+.nav-arrows {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+    pointer-events: none; 
+    z-index: 2000;
+}
+.arrow-btn {
+    pointer-events: auto;
+    background: transparent;
+    border: none;
+    font-size: 3rem;
+    color: #cfaa56; 
+    cursor: pointer;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    transition: transform 0.2s;
+}
+.arrow-btn:hover { transform: scale(1.2); color: #9f1212; }
+
+
+/* --- FOOTER (UPDATED) --- */
+footer {
+    background-color: #9f1212; 
+    padding: 0px 30px;
+    border-top: 4px solid #cfaa56; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    /* UPDATE 2: Tambah margin-top supaya turun ke bawah */
+    margin-top: 100px;
+    position: relative;
+    z-index: 20; /* Pastikan footer duduk atas layer lain kalau overlap sikit */
+}
+.footer-lines { flex: 1; height: 4px; background-color: white; margin-right: 20px; }
+.footer-logo img { height: 70px; }
+.social-icons { display: flex; gap: 10px; }
+.social-btn { width: 40px; height: 40px; background: white; border-radius: 30%; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+.social-btn img { width: 180%; }
+
+@media (max-width: 768px) {
+    h1.page-title { font-size: 2.5rem; }
+    .nav-container { display: none; }
+    .hand-img { width: 100px; }
+    .hand-left { left: -20px; }
+    .hand-right { right: -20px; }
+}
+
+/* --- BACKGROUND TEXTURE SETTINGS --- */
+.background-texture {
+    position: fixed;  /* Melekat pada skrin, tak bergerak bila scroll */
+    top: 0;
+    left: 0;
+    width: 100%;      /* Lebar penuh */
+    height: 100%;     /* Tinggi penuh */
+    object-fit: cover; /* Pastikan gambar tak kemek/gepenk */
+    z-index: -1;      /* PENTING: Ini tolak gambar ke belakang sekali */
+    opacity: 0.3;     /* (Optional) Pudarkan sikit supaya tulisan jelas */
+}
